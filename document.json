@@ -5,7 +5,7 @@
   "import": [
     {
       "name": "alexa-styles",
-      "version": "1.2.0"
+      "version": "1.4.0"
     },
     {
       "name": "alexa-layouts",
@@ -24,15 +24,16 @@
     "ButtonText": {
       "values": [
         {
+          "fontFamily": "@fontFamilyRomanSans",
           "fontWeight": "@fontWeightLight",
           "fontSize": "@fontSizeMedium",
           "textAlign": "center",
           "width": "100%",
-          "color": "@colorBlue800"
+          "color": "@colorWhite"
         },
         {
           "when": "${state.focused || state.hover || state.pressed}",
-          "color": "@colorBlue800"
+          "color": "#005398"
         }
       ]
     },
@@ -49,7 +50,9 @@
         },
         {
           "when": "${state.focused || state.hover || state.pressed}",
-          "backgroundColor": "rgba(${@colorComponent}, .15)"
+          "backgroundColor": "rgba(${@colorComponent}, .15)",
+          "borderColor": "@colorWhite",
+          "borderWidth": 5
         }
       ]
     }
