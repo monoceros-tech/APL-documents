@@ -28,11 +28,11 @@
           "fontSize": "@fontSizeMedium",
           "textAlign": "center",
           "width": "100%",
-          "color": "@colorBlue"
+          "color": "@colorBlue800"
         },
         {
           "when": "${state.focused || state.hover || state.pressed}",
-          "color": "@colorBlue"
+          "color": "@colorBlue800"
         }
       ]
     },
