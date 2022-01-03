@@ -1,0 +1,128 @@
+{
+  "type": "APL",
+  "version": "1.6",
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-styles",
+      "version": "1.2.0"
+    },
+    {
+      "name": "alexa-layouts",
+      "version": "1.3.0"
+    }
+  ],
+  "styles": {
+    "ButtonTouchWrapper": {
+      "values": [
+        {
+          "height": "auto",
+          "width": "auto"
+        }
+      ]
+    },
+    "ButtonText": {
+      "values": [
+        {
+          "fontWeight": "@fontWeightLight",
+          "fontSize": "@fontSizeMedium",
+          "textAlign": "center",
+          "width": "100%",
+          "color": "@colorWhite"
+        },
+        {
+          "when": "${state.focused || state.hover || state.pressed}",
+          "color": "@colorBlack"
+        }
+      ]
+    },
+    "ButtonFrame": {
+      "values": [
+        {
+          "borderRadius": "@shapeRoundedRect",
+          "paddingTop": "@spacing3XSmall",
+          "paddingBottom": "@spacing3XSmall",
+          "paddingLeft": "@spacingSmall",
+          "paddingRight": "@spacingSmall",
+          "minWidth": 100,
+          "backgroundColor": "rgba(${@colorComponent}, .2)"
+        },
+        {
+          "when": "${state.focused || state.hover || state.pressed}",
+          "backgroundColor": "rgba(${@colorComponent}, .15)"
+        }
+      ]
+    }
+  },
+  "layouts": {
+    "ButtonChildren": {
+      "parameters": [
+        "frameStyle", "items"
+      ],
+      "item": {
+        "type": "Frame",
+        "inheritParentState": true,
+        "style": "${frameStyle}",
+        "items": [
+          "${items}"
+        ]
+      }
+    },
+    "Button": {
+      "parameters": [
+        {
+          "name": "touchWrapperStyle",
+          "default": "ButtonTouchWrapper"
+        },
+        {
+          "name": "frameStyle",
+          "default": "ButtonFrame"
+        },
+        {
+          "name": "textStyle",
+          "default": "ButtonText"
+        },
+        "item",
+        "items",
+        "text"
+      ],
+      "item": {
+        "type": "TouchWrapper",
+        "style": "${touchWrapperStyle}",
+        "items": [
+          {
+            "when": "${text}",
+            "type": "ButtonChildren",
+            "frameStyle": "${frameStyle}",
+            "items": {
+              "type": "Text",
+              "maxLines": 1,
+              "style": "${textStyle}",
+              "inheritParentState": true,
+              "text": "${text}"
+            }
+          },
+          {
+            "when": "${item}",
+            "type": "ButtonChildren",
+            "frameStyle": "${frameStyle}",
+            "items": "${item}"
+          },
+          {
+            "when": "${items}",
+            "type": "ButtonChildren",
+            "frameStyle": "${frameStyle}",
+            "items": "${items}"
+          }
+        ]
+      }
+    }
+  },
+  "export": {
+    "styles": ["ButtonTouchWrapper", "ButtonFrame", "ButtonText"],
+    "layouts": [{
+      "name": "Button",
+      "description": "Fully customizable button"
+    }]
+  }
+}
