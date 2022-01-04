@@ -1,7 +1,7 @@
 {
   "type": "APL",
   "version": "1.6",
-  "theme": "dark",
+  "theme": "light",
   "import": [
     {
       "name": "alexa-styles",
